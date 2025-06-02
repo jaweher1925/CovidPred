@@ -1,0 +1,380 @@
+/* 
+   COVID-19 Predictive Modeling Project Website
+   Main Stylesheet
+*/
+
+/* Base Styles and Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1e40af;
+    --primary-light: #dbeafe;
+    --secondary-color: #64748b;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --background-light: #f8fafc;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(to bottom, var(--white), var(--background-light));
+    min-height: 100vh;
+}
+
+h3 {
+    color: #2c3e50;
+}
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+.section {
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin-top: 1em;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-top: 0.75em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--white);
+    opacity: 0.9;
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1.5rem 0;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    color: var(--white);
+    margin-bottom: 0.25rem;
+}
+
+/* Main Content Sections */
+main {
+    padding-bottom: 3rem;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.intro h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.intro h3 {
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+}
+
+.summary-box {
+    background-color: var(--primary-light);
+    border: 1px solid rgba(30, 64, 175, 0.2);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.summary-box p {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+/* Feature Cards */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.feature-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.feature-card p {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* Methodology Section */
+.methodology {
+    margin-top: 3rem;
+}
+
+.methodology h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.phase {
+    margin-bottom: 1.5rem;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.phase-header {
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.phase-header:hover {
+    background-color: var(--primary-light);
+}
+
+.phase-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.phase-header h3 {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.phase-content {
+    background-color: var(--white);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.phase-content.active {
+    padding: 1.5rem;
+    max-height: none; 
+    overflow: visible; /* Ensure content is not clipped */
+}
+
+
+/* Workflow Grid */
+.workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.workflow-card {
+    background-color: var(--white);
+    border: 1px solid rgba(30, 64, 175, 0.2);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.workflow-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-header i {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+}
+.card-header h3{
+    color: #ffffff;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.findings ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+}
+
+.visualization img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.caption {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+
+
+.findings {
+    background-color: var(--light-gray);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+}
+
+
+
+
+.visualization {
+    text-align: center;
+}
+
+.viz-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.viz-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+/* Key Visualizations Section */
+.viz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.viz-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.viz-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.viz-item h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Next Steps Section */
+.next-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.next-step-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.next-step-card ul {
+    padding: 1.5rem;
+}
