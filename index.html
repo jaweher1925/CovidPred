@@ -24,6 +24,8 @@
                 <p>This project applies the CRISP-DM methodology to develop a predictive model for COVID-19 infection
                     risk based on demographic factors (sex, age) and geographic location (region). The goal is to
                     identify high-risk population groups and enable targeted preventative measures.</p>
+
+
             </div>
         </section>
         <section class="features">
@@ -42,6 +44,9 @@
                 <h3>Actionable Insights</h3>
                 <p>Targeted recommendations for public health interventions</p>
             </div>
+        </section>
+        <section>
+
         </section>
         <section class="methodology" id="methodology">
             <h2>CRISP-DM Methodology</h2>
@@ -96,17 +101,29 @@
                 <div class="phase-content" id="data-understanding">
                     <p>To achieve the project objectives, relevant data will be sourced from established public health
                         databases. Potential sources include data repositories managed by organizations like Santé
-                        Publique France, hospital administrative data, and findings from epidemiological surveys. An
-                        example dataset could be similar to the archived COVID-19 case data provided by INSPQ (Institut
-                        national de santé publique du Québec).</p>
-                    <p>The target variable for the predictive model will be the COVID-19 infection status, typically
-                        represented as a binary outcome (positive/negative). The primary predictor variables identified
-                        are sex (categorized as male, female, or other, where available), age (treated either as a
-                        continuous variable or grouped into relevant age brackets), and region (representing the
-                        geographic location of individuals).</p>
-                    <p>A critical initial step involves a thorough assessment of data quality. This includes checking
-                        for and addressing missing values, identifying and handling duplicate records, and evaluating
-                        potential biases within the dataset that could affect model fairness or accuracy.</p>
+                        Publique France, hospital administrative data, and findings from epidemiological surveys.</p>
+                    <div class="findings">
+                        <h4>Datasets: </h4>
+                        <ul>
+                            <li>PL_AGE_SEXE_v1.csv,PL_AGE_SEXE_v2.csv, PL_AGE_SEXE_v3.csv : Cumulative data on cases,
+                                rates per 100,000, by age group and sex.</li>
+                            <li>2_cas_confirme_quo dataset: Daily confirmed cases by date, region (RSS codes), age
+                                group, and sex.</li>
+
+                        </ul>
+
+                        <h4>Key Observations::</h4>
+                        <ul>
+                            <li> Age groups: 0-9, 10-19, ..., 90+.</li>
+                            <li>Sex: MASC (Homme), FEM (Femme), INC (Inconnu).</li>
+                            <li>Regions: RSS01 to RSS18 (e.g., RSS06 = Montréal, RSS16 = Montérégie).</li>
+                            <li>Rates per 100,000 in v2 show higher infection risk for older ages (e.g., 7760.67 for
+                                90+).</li>
+                            <li>Daily cases (psi_quo_pos_n) vary by region and time, with gaps or zeros in some entries.
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
             <!-- Phase 3: Data Preparation -->
@@ -135,10 +152,34 @@
 
                     <section class="workflow">
                         <h2><i class="fas fa-project-diagram"></i> Data Preparation Workflow</h2>
+<div>
+    <h2>Analysis of Cases by Age and Gender</h2>
+
+    <div class="image-container">
+        <img src="images/cases_by_age_and_gender.png" 
+             alt="COVID-19 Cases by Age Group and Gender" width="900" height="500">
+        <p class="caption">Distribution of COVID-19 cases by age group and gender</p>
+    </div>
+
+    <h3>Key Observations</h3>
+    <ul>
+        <li>Relatively balanced distribution of cases between men and women in most age groups</li>
+        <li>Slight female predominance in certain age groups (particularly 20-59 years)</li>
+        <li>Concentration of cases in active age groups (20-59 years)</li>
+        <li>Lower number of cases among children (0-9 years) and the very elderly (80+ years)</li>
+    </ul>
+    <br/>
+</div>
+   <div class="highlight-box text-align " >
+        <h3 >Implications pour la santé publique</h3>
+        <p>Le virus affecte tous les groupes d'âge, mais avec une distribution qui suit la pyramide démographique. La transmission semble particulièrement active dans les populations en âge de travailler. Les stratégies de prévention doivent cibler tous les groupes d'âge, avec une attention particulière aux adultes actifs qui peuvent être des vecteurs importants de transmission.</p>
+    </div>
 
                         <div class="workflow-grid">
                             <!-- Step 1: Data Understanding -->
+                             
                             <div class="workflow-card" id="step1">
+                              
                                 <div class="card-header">
                                     <i class="fas fa-database"></i>
                                     <h3>Step 1: Data Understanding</h3>
@@ -318,77 +359,82 @@
 
                         </div>
                     </section>
-                      <section class="key-visualizations">
-            <h2><i class="fas fa-chart-bar"></i> Key Visualizations</h2>
-            
-            <div class="viz-grid">
-                <div class="viz-item">
-                    <h3>Cases by Age Group</h3>
-                    <img src="images/2_cas_confirme_quo_region_distribution.png" alt="Cases by Region" class="viz-image">
-                    <p class="caption">Distribution of COVID-19 cases across different regions</p>
-                </div>
-                
-                <div class="viz-item">
-                    <h3>Mortality Rate by Age</h3>
-                    <img src="images/PL_AGE_SEXE_v1_mortality_rate.png" alt="Mortality Rate by Age" class="viz-image">
-                    <p class="caption">Mortality rate across different age groups</p>
-                </div>
-                
-                <div class="viz-item">
-                    <h3>Hospitalization Rate by Age</h3>
-                    <img src="images/PL_AGE_SEXE_v1_hospitalization_rate.png" alt="Hospitalization Rate by Age" class="viz-image">
-                    <p class="caption">Hospitalization rate across different age groups</p>
-                </div>
-                
-                <div class="viz-item">
-                    <h3>Recovery Rate by Age</h3>
-                    <img src="images/PL_AGE_SEXE_v1_recovery_rate.png" alt="Recovery Rate by Age" class="viz-image">
-                    <p class="caption">Recovery rate across different age groups</p>
-                </div>
-                
-                <div class="viz-item">
-                    <h3>Cases Over Time</h3>
-                    <img src="images/2_cas_confirme_quo_cases_over_time.png" alt="Cases Over Time" class="viz-image">
-                    <p class="caption">Trend of COVID-19 cases over time</p>
-                </div>
-                
-                <div class="viz-item">
-                    <h3>Correlation Heatmap</h3>
-                    <img src="images/correlation_heatmap.png" alt="Correlation Heatmap" class="viz-image">
-                    <p class="caption">Correlation between different COVID-19 metrics</p>
-                </div>
-            </div>
-        </section>
+                    <section class="key-visualizations">
+                        <h2><i class="fas fa-chart-bar"></i> Key Visualizations</h2>
+
+                        <div class="viz-grid">
+                            <div class="viz-item">
+                                <h3>Cases by Age Group</h3>
+                                <img src="images/2_cas_confirme_quo_region_distribution.png" alt="Cases by Region"
+                                    class="viz-image">
+                                <p class="caption">Distribution of COVID-19 cases across different regions</p>
+                            </div>
+
+                            <div class="viz-item">
+                                <h3>Mortality Rate by Age</h3>
+                                <img src="images/PL_AGE_SEXE_v1_mortality_rate.png" alt="Mortality Rate by Age"
+                                    class="viz-image">
+                                <p class="caption">Mortality rate across different age groups</p>
+                            </div>
+
+                            <div class="viz-item">
+                                <h3>Hospitalization Rate by Age</h3>
+                                <img src="images/PL_AGE_SEXE_v1_hospitalization_rate.png"
+                                    alt="Hospitalization Rate by Age" class="viz-image">
+                                <p class="caption">Hospitalization rate across different age groups</p>
+                            </div>
+
+                            <div class="viz-item">
+                                <h3>Recovery Rate by Age</h3>
+                                <img src="images/PL_AGE_SEXE_v1_recovery_rate.png" alt="Recovery Rate by Age"
+                                    class="viz-image">
+                                <p class="caption">Recovery rate across different age groups</p>
+                            </div>
+
+                            <div class="viz-item">
+                                <h3>Cases Over Time</h3>
+                                <img src="images/2_cas_confirme_quo_cases_over_time.png" alt="Cases Over Time"
+                                    class="viz-image">
+                                <p class="caption">Trend of COVID-19 cases over time</p>
+                            </div>
+
+                            <div class="viz-item">
+                                <h3>Correlation Heatmap</h3>
+                                <img src="images/correlation_heatmap.png" alt="Correlation Heatmap" class="viz-image">
+                                <p class="caption">Correlation between different COVID-19 metrics</p>
+                            </div>
+                        </div>
+                    </section>
 
                 </div>
-                
+
             </div>
-                <!-- Phase 4: Modeling -->
-                  <div class="phase">
+            <!-- Phase 4: Modeling -->
+            <div class="phase">
                 <div class="phase-header" onclick="togglePhase('modeling')">
                     <div class="phase-icon">🔍</div>
                     <h3>4. Modeling</h3>
                     <span class="toggle-icon">+</span>
                 </div>
                 <div class="phase-content" id="modeling">
-                            <p>
-                                Developed a Random Forest Regressor model to predict COVID-19 infection rates based on
-                                demographic factors.
-                            </p>
-                            <div class="findings">
-                                <h4>Model Selection Justification:</h4>
-                                <ul>
-                                    <li>Regression Task: Target variable is a continuous infection rate</li>
-                                    <li>Handling Categorical Features: Effectively processes age group categories</li>
-                                    <li>Capturing Non-Linear Relationships: Can model complex patterns between age and
-                                        infection risk</li>
-                                    <li>Robustness: Ensemble approach reduces overfitting risk</li>
-                                    <li>Out-of-Bag Evaluation: Provides internal validation metrics</li>
-                                </ul>
-                            </div>
-                            <div class="code-snippet">
-                                <h4>Code Snippet:</h4>
-                                <pre>
+                    <p>
+                        Developed a Random Forest Regressor model to predict COVID-19 infection rates based on
+                        demographic factors.
+                    </p>
+                    <div class="findings">
+                        <h4>Model Selection Justification:</h4>
+                        <ul>
+                            <li>Regression Task: Target variable is a continuous infection rate</li>
+                            <li>Handling Categorical Features: Effectively processes age group categories</li>
+                            <li>Capturing Non-Linear Relationships: Can model complex patterns between age and
+                                infection risk</li>
+                            <li>Robustness: Ensemble approach reduces overfitting risk</li>
+                            <li>Out-of-Bag Evaluation: Provides internal validation metrics</li>
+                        </ul>
+                    </div>
+                    <div class="code-snippet">
+                        <h4>Code Snippet:</h4>
+                        <pre>
 # Preprocessing and Modeling Pipeline
 preprocessor = ColumnTransformer(
     transformers=[
@@ -405,98 +451,180 @@ pipeline = Pipeline(steps=[('preprocessor', preprocessor),
 # Train model
 pipeline.fit(X_train, y_train)
                             </pre>
-                            </div>
-                            <div class="visualization">
-                                <h4>Visualization:</h4>
-                                <img src="images/feature_importance.png" alt="Feature Importance" class="viz-image">
-                                <p class="caption">Feature importance by age group (simulated)</p>
-                            </div>
-                        </div>
                     </div>
-
+                    <div class="visualization">
+                        <h4>Visualization:</h4>
+                        <img src="images/feature_importance.png" alt="Feature Importance" class="viz-image"  width="900" height="300">
+                        <p class="caption">Feature importance by age group (simulated)</p>
+                    </div>
                 </div>
-                <!-- Phase 5: Evaluation -->
-                     <div class="phase">
+            </div>
+
+            </div>
+            <!-- Phase 5: Evaluation -->
+            <div class="phase">
                 <div class="phase-header" onclick="togglePhase('evaluating')">
                     <div class="phase-icon">🔍</div>
                     <h3>5. Evaluation</h3>
                     <span class="toggle-icon">+</span>
                 </div>
                 <div class="phase-content" id="evaluating">
-                            <p>
-                                Assessed the model's performance using multiple metrics and analyzed the results to
-                                understand limitations.
-                            </p>
-                            <div class="findings">
-                                <h4>Evaluation Metrics:</h4>
-                                <ul>
-                                    <li>Mean Squared Error (MSE): 7,964,596.84</li>
-                                    <li>Root Mean Squared Error (RMSE): 2,822.16</li>
-                                    <li>Mean Absolute Error (MAE): 2,074.53</li>
-                                    <li>R-squared (R²): -0.8361</li>
-                                    <li>Out-of-Bag R² Score: -1.0299</li>
-                                </ul>
+                    <p>
+                        Assessed the model's performance using multiple metrics and analyzed the results to
+                        understand limitations.
+                    </p>
+                    <div class="findings">
+                        <h4>Evaluation Metrics:</h4>
+                        <ul>
+                            <li>Mean Squared Error (MSE): 7,964,596.84</li>
+                            <li>Root Mean Squared Error (RMSE): 2,822.16</li>
+                            <li>Mean Absolute Error (MAE): 2,074.53</li>
+                            <li>R-squared (R²): -0.8361</li>
+                            <li>Out-of-Bag R² Score: -1.0299</li>
+                        </ul>
+                    </div>
+                    <div class="analysis">
+                        <h4>Analysis of Results:</h4>
+                        <p>The negative R² values indicate that the model performs worse than simply predicting
+                            the mean of the target variable. This poor performance can be attributed to:</p>
+                        <ul>
+                            <li>Data Aggregation: Using group-level rather than individual data</li>
+                            <li>Limited Features: Relying solely on age group as a predictor</li>
+                            <li>Small Dataset Size: Only 36 samples total (25 training, 11 testing)</li>
+                            <li>Complex Relationships: COVID-19 risk depends on many factors beyond demographics
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="visualization">
+                        <h4>Visualizations:</h4>
+                        <div class="viz-row">
+                            <div class="viz-col">
+                                <img src="images/error_metrics.png" alt="Error Metrics" class="viz-image"  width="900" height="500">
+                                <p class="caption">Error metrics (log scale)</p>
                             </div>
-                            <div class="analysis">
-                                <h4>Analysis of Results:</h4>
-                                <p>The negative R² values indicate that the model performs worse than simply predicting
-                                    the mean of the target variable. This poor performance can be attributed to:</p>
-                                <ul>
-                                    <li>Data Aggregation: Using group-level rather than individual data</li>
-                                    <li>Limited Features: Relying solely on age group as a predictor</li>
-                                    <li>Small Dataset Size: Only 36 samples total (25 training, 11 testing)</li>
-                                    <li>Complex Relationships: COVID-19 risk depends on many factors beyond demographics
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="visualization">
-                                <h4>Visualizations:</h4>
-                                <div class="viz-row">
-                                    <div class="viz-col">
-                                        <img src="images/error_metrics.png" alt="Error Metrics" class="viz-image">
-                                        <p class="caption">Error metrics (log scale)</p>
-                                    </div>
-                                    <div class="viz-col">
-                                        <img src="images/r_squared_metrics.png" alt="R-squared Metrics"
-                                            class="viz-image">
-                                        <p class="caption">R-squared performance metrics</p>
-                                    </div>
-                                </div>
-                                <div class="viz-row">
-                                    <img src="images/actual_vs_predicted.png" alt="Actual vs Predicted Values"
-                                        class="viz-image">
-                                    <p class="caption">Actual vs. predicted infection rates (simulated)</p>
-                                </div>
+                            <div class="viz-col">
+                                <img src="images/r_squared_metrics.png" alt="R-squared Metrics" class="viz-image"  width="900" height="500">
+                                <p class="caption">R-squared performance metrics</p>
                             </div>
                         </div>
+                        <div class="viz-row">
+                            <img src="images/actual_vs_predicted.png" alt="Actual vs Predicted Values"
+                                class="viz-image"  width="900" height="500">
+                            <p class="caption">Actual vs. predicted infection rates (simulated)</p>
+                        </div>
                     </div>
+                    <section class="summary-box2">
+                        <!-- Section 1: Analyse -->
+                        <section id="analyse">
+                            <h1>Data Analysis</h1>
+                            <p>Analysis of COVID-19 demographic data reveals a marked risk gradient by age, with major
+                                implications for public health.</p>
+                            <ul>
+                                <li><strong>At-risk group:</strong> The elderly (aged 70+) are the most vulnerable.</li>
+                                <li><strong>Young adults:</strong> Although their individual risk is low, they can be
+                                    important vectors of transmission.</li>
+                                <li><strong>Children:</strong> Very low mortality and hospitalization rates, but may
+                                    contribute to transmission.</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Implications:</strong> Vaccination should be prioritized for at-risk groups,
+                                    followed by young adults and children according to specific criteria.</p>
+                            </div>
+                        </section>
+
+                        <!-- Section 2: Prevention Strategies -->
+                        <section id="strategies">
+                            <h2>Prevention and Response Strategies</h2>
+                            <h3>1. Priority Vaccination</h3>
+                            <ul>
+                                <li>Prioritize the elderly (70+ years).</li>
+                                <li>Vaccinate young adults after high-risk groups.</li>
+                                <li>Consider vaccinating children in a later phase or based on specific criteria
+                                    (comorbidities).</li>
+                            </ul>
+
+                            <h3>2. Hospital Planning</h3>
+                            <ul>
+                                <li>Develop a predictive dashboard to anticipate hospital demand.</li>
+                                <li>Establish alert thresholds by region based on hospital capacity.</li>
+                                <li>Plan inter-regional transfer mechanisms in case of saturation.</li>
+                            </ul>
+
+                            <h3>3. Public Communication</h3>
+                            <ul>
+                                <li>Explain the correlations between cases, hospitalizations, and deaths.</li>
+                                <li>Tailor messages according to the demographic structure of regions.</li>
+                            </ul>
+                        </section>
+
+                        <!-- Section 3: Key Visualizations -->
+                        <section id="visualisations">
+                            <h2>Key Visualizations</h2>
+                            <p>Visualizations help better understand epidemiological trends:</p>
+                            <ul>
+                                <li><strong>Cases by age group:</strong> Marked risk gradient by age.</li>
+                                <li><strong>Mortality rate:</strong> Higher among the elderly.</li>
+                                <li><strong>Hospitalizations:</strong> Concentration in high-risk groups.</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Practical use:</strong> Transform visualizations into decision-support tools
+                                    for public health officials.</p>
+                            </div>
+                        </section>
+
+                        <!-- Section 4: Conclusion -->
+                        <section id="conclusion">
+                            <h2>Conclusion</h2>
+                            <p>Analysis of COVID-19 demographic data highlights targeted strategies for:</p>
+                            <ul>
+                                <li>Improving hospital resource planning.</li>
+                                <li>Guiding public communication on risks.</li>
+                                <li>Directing scientific research and prevention policies.</li>
+                            </ul>
+                            <p>This approach maximizes the effectiveness of health interventions.</p>
+                        </section>
+
+
+
+                    </section>
+
                 </div>
-                <!-- Phase 6: Deployment -->
-                <div class="phase">
-                    <div class="phase-header" onclick="togglePhase('deployment')">
-                        <div class="phase-icon">🚀</div>
-                        <h3>6. Deployment</h3>
-                        <span class="toggle-icon">+</span>
-                    </div>
-                    <div class="phase-content" id="deployment">
-                        <p>Once a satisfactory model is selected and validated, it will be prepared for deployment. The
-                            deployment format will depend on the intended use case. Options include creating an
-                            interactive dashboard, potentially using tools like Power BI or Streamlit, which would allow
-                            users to explore the risk predictions based on different demographic and geographic inputs.
-                        </p>
-                        <p>Alternatively, the findings and the model could be documented in a final report. This report
-                            will detail the methodology, results, and provide actionable recommendations for public
-                            health officials regarding targeted prevention strategies based on the identified high-risk
-                            groups.</p>
-                    </div>
+
+            </div>
+            </div>
+            <!-- Phase 6: Deployment -->
+            <div class="phase">
+                <div class="phase-header" onclick="togglePhase('deployment')">
+                    <div class="phase-icon">🚀</div>
+                    <h3>6. Deployment</h3>
+                    <span class="toggle-icon">+</span>
                 </div>
+                <div class="phase-content" id="deployment">
+                    <p>Once a satisfactory model is selected and validated, it will be prepared for deployment. The
+                        deployment format will depend on the intended use case. Options include creating an
+                        interactive dashboard, potentially using tools like Power BI or Streamlit, which would allow
+                        users to explore the risk predictions based on different demographic and geographic inputs.
+                    </p>
+                    <p>Alternatively, the findings and the model could be documented in a final report. This report
+                        will detail the methodology, results, and provide actionable recommendations for public
+                        health officials regarding targeted prevention strategies based on the identified high-risk
+                        groups.</p>
+                </div>
+            </div>
         </section>
+        <div class="container">
+
+
+
+
+        </div>
+
     </main>
     <footer>
         <div class="container">
-            <p>  COVID-19 Predictive Modeling Project</p>
+            <p> COVID-19 Predictive Modeling Project</p>
             <p>Based on CRISP-DM methodology</p>
-                <p>Hichri Jaweher _  MP1-BIG DATA-24-25</p>
+            <p>Hichri Jaweher _ MP1-BIG DATA-24-25</p>
         </div>
     </footer>
     <script src="script.js"></script>

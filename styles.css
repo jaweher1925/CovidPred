@@ -125,6 +125,15 @@ main {
     margin: 1.5rem 0;
 }
 
+
+.summary-box2 {
+    background-color: var(--primary-light);
+    border: 1px solid rgba(181, 196, 246, 0.2);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
 .summary-box p {
     font-style: italic;
     font-size: 1.1rem;
